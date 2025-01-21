@@ -133,15 +133,17 @@ class Trainer:
 
     def __init__(self, model, train_dataset, test_dataset, config, savedir=None, device=torch.device("cpu"), aisdls={},
                  INIT_SEQLEN=0):
+        print(f"Trainer initialized with device: {device}")
         self.train_dataset = train_dataset
         self.test_dataset = test_dataset
         self.config = config
         self.savedir = savedir
 
         self.device = device
-        self.model = model.to(device)
+        self.model = model.to(self.device)
         self.aisdls = aisdls
         self.INIT_SEQLEN = INIT_SEQLEN
+
 
     def save_checkpoint(self, best_epoch):
         # DataParallel wrappers keep raw model object in .module attribute
@@ -262,24 +264,41 @@ class Trainer:
         self.tokens = 0  # counter used for learning rate decay
         best_epoch = 0
 
+        patience = 5  # 设置耐心参数，例如5个epochs
+        epochs_no_improve = 0  # 追踪没有改善的epochs数量
+        
         for epoch in range(config.max_epochs):
 
             run_epoch('Training', epoch=epoch)
             if self.test_dataset is not None:
                 test_loss = run_epoch('Valid', epoch=epoch)
 
-            # supports early stopping based on the test loss, or just save always if no test set is provided
-            good_model = self.test_dataset is None or test_loss < best_loss
-            if self.config.ckpt_path is not None and good_model:
-                best_loss = test_loss
-                best_epoch = epoch
-                self.save_checkpoint(best_epoch + 1)
+                  # 更新最佳损失和保存模型
+                if test_loss < best_loss:
+                    best_loss = test_loss
+                    best_epoch = epoch
+                    epochs_no_improve = 0  # 重置没有改善的epochs计数器
+                    if self.config.ckpt_path is not None:
+                        self.save_checkpoint(best_epoch + 1)
+                else:
+                    epochs_no_improve += 1  # 增加没有改善的epochs计数器
+
+                # 检查是否达到早停条件
+                if epochs_no_improve >= patience:
+                    print(f'Early stopping after {epoch + 1} epochs.')
+                    break
+            # # supports early stopping based on the test loss, or just save always if no test set is provided
+            # good_model = self.test_dataset is None or test_loss < best_loss
+            # if self.config.ckpt_path is not None and good_model:
+            #     best_loss = test_loss
+            #     best_epoch = epoch
+            #     self.save_checkpoint(best_epoch + 1)
 
             ## SAMPLE AND PLOT
             # ==========================================================================================
             # ==========================================================================================
             raw_model = model.module if hasattr(self.model, "module") else model
-            seqs, masks, seqlens, mmsis, time_starts = iter(aisdls["test"]).next()
+            seqs, masks, seqlens, mmsis, time_starts = next(iter(aisdls["test"]))
             n_plots = 7
             init_seqlen = INIT_SEQLEN
             seqs_init = seqs[:n_plots, :init_seqlen, :].to(self.device)

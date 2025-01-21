@@ -1,0 +1,11 @@
+dependencies:
+  - bokeh
+  - dask
+  - pandas-profiling
+  - missingno
+  - cloudpickle
+  - fsspec
+  - pillow
+  - scikit-image
+  - pip:
+    - opencv-python

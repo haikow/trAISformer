@@ -1,0 +1,12 @@
+dependencies:
+  - jupyterlab
+  - pip
+  - pytest
+  - black
+  - flake8
+  - pip:
+    - ray
+    - gpustat
+    - pyasn1
+    - pyOpenSSL
+    - redis

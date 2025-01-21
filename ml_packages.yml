@@ -1,0 +1,8 @@
+dependencies:
+  - xgboost
+  - lightgbm
+  - catboost
+  - imbalanced-learn
+  - numba
+  - networkx
+  - scipy

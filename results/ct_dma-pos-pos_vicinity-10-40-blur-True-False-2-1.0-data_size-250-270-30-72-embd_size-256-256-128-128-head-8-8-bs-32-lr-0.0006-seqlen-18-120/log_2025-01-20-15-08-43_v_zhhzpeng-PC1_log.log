@@ -1,0 +1,7 @@
+2025-01-20 15:08:43,875 - models - number of parameters: 5.742055e+07
+2025-01-20 15:32:12,559 - root - Training, epoch 1, loss 9.17535, lr 5.993205e-04.
+2025-01-20 15:33:26,881 - root - Valid, epoch 1, loss 4.44123.
+2025-01-20 15:33:26,883 - root - Best epoch: 001, saving model to ./results/ct_dma-pos-pos_vicinity-10-40-blur-True-False-2-1.0-data_size-250-270-30-72-embd_size-256-256-128-128-head-8-8-bs-32-lr-0.0006-seqlen-18-120/model.pt
+2025-01-20 15:57:46,280 - root - Training, epoch 2, loss 2.91392, lr 5.966600e-04.
+2025-01-20 15:59:06,936 - root - Valid, epoch 2, loss 2.38241.
+2025-01-20 15:59:06,939 - root - Best epoch: 002, saving model to ./results/ct_dma-pos-pos_vicinity-10-40-blur-True-False-2-1.0-data_size-250-270-30-72-embd_size-256-256-128-128-head-8-8-bs-32-lr-0.0006-seqlen-18-120/model.pt
