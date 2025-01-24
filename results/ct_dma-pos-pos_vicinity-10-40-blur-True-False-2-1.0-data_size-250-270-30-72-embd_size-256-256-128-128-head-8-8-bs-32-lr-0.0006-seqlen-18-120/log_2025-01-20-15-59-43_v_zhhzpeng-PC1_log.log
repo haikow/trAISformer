@@ -23,3 +23,6 @@
 2025-01-21 09:19:46,593 - root - Training, epoch 8, loss 0.93807, lr 5.403383e-04.
 2025-01-21 09:21:01,208 - root - Valid, epoch 8, loss 1.44892.
 2025-01-21 09:21:01,212 - root - Best epoch: 008, saving model to ./results/ct_dma-pos-pos_vicinity-10-40-blur-True-False-2-1.0-data_size-250-270-30-72-embd_size-256-256-128-128-head-8-8-bs-32-lr-0.0006-seqlen-18-120/model.pt
+2025-01-21 09:45:27,226 - root - Training, epoch 9, loss 0.83873, lr 5.248156e-04.
+2025-01-21 09:46:45,379 - root - Valid, epoch 9, loss 1.39313.
+2025-01-21 09:46:45,384 - root - Best epoch: 009, saving model to ./results/ct_dma-pos-pos_vicinity-10-40-blur-True-False-2-1.0-data_size-250-270-30-72-embd_size-256-256-128-128-head-8-8-bs-32-lr-0.0006-seqlen-18-120/model.pt
