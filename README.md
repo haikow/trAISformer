@@ -1,5 +1,7 @@
 # TrAISformer
 
+Fork from [https://github.com/CIA-Oceanix/TrAISformer]
+
 Pytorch implementation of TrAISformer---A generative transformer for AIS trajectory prediction (https://arxiv.org/abs/2109.03958).
 
 The transformer part is adapted from: https://github.com/karpathy/minGPT
