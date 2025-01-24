@@ -6,7 +6,7 @@ The transformer part is adapted from: https://github.com/karpathy/minGPT
 
 ---
 <p align="center">
-  <img width="600" height="450" src="./results/prediction_error.png">
+  <img width="600" height="450" src="./results/ct_dma-pos-pos_vicinity-10-40-blur-True-False-2-1.0-data_size-250-270-30-72-embd_size-256-256-128-128-head-8-8-bs-32-lr-0.0006-seqlen-18-120//prediction_error.png">
 </p>
 
 
